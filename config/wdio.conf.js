@@ -40,8 +40,8 @@ exports.config = {
           'appium:deviceName': isIOS ? 'iPhone 14 Pro Max' : 'Samsung Galaxy S23 Ultra',          
           'appium:automationName': isIOS ? 'XCUITest' : 'UiAutomator2',
           'appium:app': isIOS ? browserStackAppId.ios : browserStackAppId.android, // App ID dinâmico
-          user: process.env.BROWSERSTACK_USERNAME || 'clapthesun_FlEiWT',
-          key: process.env.BROWSERSTACK_ACCESS_KEY || 'JnPSTQFKvsgE2VmCRyJc',
+          user: process.env.BROWSERSTACK_USERNAME,
+          key: process.env.BROWSERSTACK_ACCESS_KEY,
         },
       ]
     : [
