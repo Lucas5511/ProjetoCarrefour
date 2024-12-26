@@ -30,6 +30,7 @@
     "@wdio/json-reporter": "^9.4.4",
     "@wdio/mocha-framework": "^9.4.4",
     "@wdio/spec-reporter": "^9.4.4",
-    "appium-uiautomator2-driver": "^3.9.5"
+    "appium-uiautomator2-driver": "^3.9.5",
+    "cross-env": "^7.0.3"
   }
 }
