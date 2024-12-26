@@ -3,27 +3,15 @@ stages:
   - test
   - deploy
 
-# Usando a imagem base Ruby
-image: ruby:3.1
+# Usando a imagem Docker com Node.js
+image: node:16
 
 # Job para instalar as dependências
 install-dependencies:
   stage: install
   script:
     - echo "Instalando dependências..."
-    # Atualizando o repositório
-    - apt-get update -y
-    # Instalando dependências básicas e Node.js
-    - apt-get install -y curl gnupg2 ca-certificates lsb-release
-    # Adicionando o repositório do Node.js
-    - curl -sL https://deb.nodesource.com/setup_16.x | bash -
-    # Instalando o Node.js
-    - apt-get install -y nodejs
-    # Verificando se o Node.js e npm foram instalados corretamente
-    - node -v
-    - npm -v
-    # Instalando as dependências do projeto
-    - npm install
+    - npm install  # Agora o npm estará disponível
 
 # Job para rodar os testes Android no BrowserStack
 test-android-browserstack:
