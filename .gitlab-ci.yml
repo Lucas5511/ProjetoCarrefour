@@ -1,55 +1,65 @@
-stages:          # Estágios da pipeline
+stages:
   - build
   - test
   - deploy
 
-# Job para compilar o projeto (se necessário)
 build-job:
   stage: build
   script:
     - echo "Compiling the code..."
     - echo "Compile complete."
 
-# Job para rodar os testes Android localmente
 test-android-local:
   stage: test
+  before_script:
+    # Instalar Node.js e npm
+    - apt-get update
+    - apt-get install -y nodejs npm
   script:
     - echo "Running Android tests locally..."
     - npm run test:android:local
   only:
-    - master  # Altere conforme sua necessidade, por exemplo, para rodar em branches específicos
+    - master
 
-# Job para rodar os testes iOS localmente
 test-ios-local:
   stage: test
+  before_script:
+    # Instalar Node.js e npm
+    - apt-get update
+    - apt-get install -y nodejs npm
   script:
     - echo "Running iOS tests locally..."
     - npm run test:ios:local
   only:
-    - master  # Altere conforme sua necessidade, por exemplo, para rodar em branches específicos
+    - master
 
-# Job para rodar os testes Android no BrowserStack
 test-android-browserstack:
   stage: test
+  before_script:
+    # Instalar Node.js e npm
+    - apt-get update
+    - apt-get install -y nodejs npm
   script:
     - echo "Running Android tests on BrowserStack..."
     - npm run test:android:browserstack
   only:
-    - master  # Altere conforme sua necessidade
+    - master
 
-# Job para rodar os testes iOS no BrowserStack
 test-ios-browserstack:
   stage: test
+  before_script:
+    # Instalar Node.js e npm
+    - apt-get update
+    - apt-get install -y nodejs npm
   script:
     - echo "Running iOS tests on BrowserStack..."
     - npm run test:ios:browserstack
   only:
-    - master  # Altere conforme sua necessidade
+    - master
 
-# Job para gerar e abrir o relatório do Allure
 allure-report:
   stage: deploy
   script:
     - npm run allure-report
   only:
-    - master  # Altere conforme sua necessidade
+    - master
