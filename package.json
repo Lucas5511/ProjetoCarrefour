@@ -16,14 +16,15 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    
+  },
+  "devDependencies": {
     "@wdio/cli": "^9.4.5",
     "appium": "^2.13.1",
     "chai": "^5.1.2",
     "dotenv": "^16.4.7",
     "mocha": "^11.0.1",
-    "wdio-chromedriver-service": "^8.1.1"
-  },
-  "devDependencies": {
+    "wdio-chromedriver-service": "^8.1.1",
     "@wdio/allure-reporter": "^9.4.4",
     "@wdio/appium-service": "^9.4.5",
     "@wdio/browserstack-service": "^9.4.5",
