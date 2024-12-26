@@ -5,8 +5,8 @@ const isAndroid = process.env.PLATFORM === 'android'; // Define se a plataforma 
 
 // IDs do BrowserStack separados para Android e iOS
 const browserStackAppId = {
-  android: 'bs://7c53b784f240cbdf164009323045847d0bff5c3b',
-  ios: 'bs://1d2c4cfb0484dc888b835fae919dbcb7635346d1',
+  android: 'bs://fb855bd4c54052219a1c92b564544e5392db886c',
+  ios: 'bs://7fc57411897ff4e3233149620eb000ba36c5c01c',
 };
 
 exports.config = {
@@ -40,8 +40,8 @@ exports.config = {
           'appium:deviceName': isIOS ? 'iPhone 14 Pro Max' : 'Samsung Galaxy S23 Ultra',          
           'appium:automationName': isIOS ? 'XCUITest' : 'UiAutomator2',
           'appium:app': isIOS ? browserStackAppId.ios : browserStackAppId.android, // App ID dinâmico
-          user: process.env.BROWSERSTACK_USERNAME || 'lucasdeoliveiras_BCfDNo',
-          key: process.env.BROWSERSTACK_ACCESS_KEY || 'H6yDfhBWyi31rJu69oYd',
+          user: process.env.BROWSERSTACK_USERNAME || 'clapthesun_FlEiWT',
+          key: process.env.BROWSERSTACK_ACCESS_KEY || 'JnPSTQFKvsgE2VmCRyJc',
         },
       ]
     : [

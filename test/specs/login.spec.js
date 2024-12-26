@@ -39,13 +39,16 @@ describe('Teste de Cadastro com Usuário Inválido', () => {
   const invalidUser = users.find(user => user.invaliduser && user.invalidpassword); // Usando o mesmo invalidUser do login
 
   it(`Não deve realizar cadastro com o usuário inválido ${invalidUser.invaliduser}`, async () => {
+    const repeatPasswordError = await LoginPage.getRepeatPasswordErrorMessageSignup(invalidUser.invaliduser, invalidUser.invalidpassword);
+    expect(repeatPasswordError).to.include('Please enter the same password'); 
+    
     const emailError = await LoginPage.getEmailErrorMessageSignup(invalidUser.invaliduser, invalidUser.invalidpassword);
     expect(emailError).to.include('valid email');  
 
     const passwordError = await LoginPage.getPasswordErrorMessageSignup(invalidUser.invaliduser, invalidUser.invalidpassword);
     expect(passwordError).to.include('at least 8 characters');  
 
-    const repeatPasswordError = await LoginPage.getRepeatPasswordErrorMessageSignup(invalidUser.invaliduser, invalidUser.invalidpassword);
-    expect(repeatPasswordError).to.include('Please enter the same password');  
+     
   });
 });
+
