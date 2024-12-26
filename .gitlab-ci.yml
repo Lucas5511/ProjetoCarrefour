@@ -46,6 +46,11 @@ test-browserstack-ios:
 allure-report:
   stage: deploy
   script:
+    - echo "Instalando o Java necessário para o Allure..."
+    - apt-get update && apt-get install -y openjdk-11-jre
+    - export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+    - export PATH=$JAVA_HOME/bin:$PATH
+    - java -version
     - echo "Gerando o relatório do Allure..."
     - ./node_modules/.bin/allure generate allure-results --clean
     - ./node_modules/.bin/allure open
