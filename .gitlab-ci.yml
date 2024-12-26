@@ -1,5 +1,10 @@
 stages:
+  - install
   - test
+  - deploy
+
+# Usando a imagem Docker com Node.js
+image: node:22
 
 variables:
   BROWSERSTACK_USERNAME: "lucasdeoliveiras_BCfDNo"
@@ -11,12 +16,27 @@ cache:
   paths:
     - node_modules/
 
-before_script:
-  - npm ci
+# Job para instalar as dependências
+install-dependencies:
+  stage: install
+  script:
+    - echo "Instalando dependências..."
+    - npm ci
 
-test_android_browserstack:
+# Job para rodar os testes Android no BrowserStack
+test-browserstack:
   stage: test
   script:
+    - echo "Executando testes Android no BrowserStack..."
     - ./node_modules/.bin/wdio run ./config/wdio.conf.js
-  tags:
-    - android-test
+  only:
+    - master
+
+# Job para gerar e exibir o relatório do Allure
+allure-report:
+  stage: deploy
+  script:
+    - echo "Gerando o relatório do Allure..."
+    - npm run allure-report  # Gerar o relatório do Allure
+  only:
+    - master
