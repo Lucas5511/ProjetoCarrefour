@@ -18,7 +18,7 @@ test-android-browserstack:
   stage: test
   script:
     - echo "Executando testes Android no BrowserStack..."
-    - npm run test:android:browserstack
+    - npm run docker:browserstack:android
   only:
     - master
 
@@ -27,7 +27,7 @@ test-ios-browserstack:
   stage: test
   script:
     - echo "Executando testes iOS no BrowserStack..."
-    - npm run test:ios:browserstack
+    - npm run docker:browserstack:ios
   only:
     - master
 

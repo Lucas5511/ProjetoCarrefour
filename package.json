@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test:android:local": "set PLATFORM=android && set TEST_ENV=local && npx wdio config/wdio.conf.js",
-    "test:ios:local": "set PLATFORM=ios && set TEST_ENV=local && npx wdio config/wdio.conf.js",
-    "test:android:browserstack": "set PLATFORM=android && set TEST_ENV=browserstack && npx wdio config/wdio.conf.js",
-    "test:ios:browserstack": "set PLATFORM=ios && set TEST_ENV=browserstack && npx wdio config/wdio.conf.js",
+    "test:android:local": "cross-env PLATFORM=android TEST_ENV=local npx wdio config/wdio.conf.js",
+    "test:ios:local": "cross-env PLATFORM=ios TEST_ENV=local npx wdio config/wdio.conf.js",
+    "test:android:browserstack": "cross-env PLATFORM=android TEST_ENV=browserstack npx wdio config/wdio.conf.js",
+    "test:ios:browserstack": "cross-env PLATFORM=ios TEST_ENV=browserstack npx wdio config/wdio.conf.js",
+    "docker:browserstack:android": "docker run --rm -e PLATFORM=android -e TEST_ENV=browserstack -v $(pwd):/app -w /app node:16 npm run test:browserstack:android",
+    "docker:browserstack:ios": "docker run --rm -e PLATFORM=ios -e TEST_ENV=browserstack -v $(pwd):/app -w /app node:16 npm run test:browserstack:ios",
     "allure-report": "allure generate allure-results --clean && allure open",
     "test": "npx wdio run config/wdio.conf.js"
+    
   },
   "keywords": [],
   "author": "",
