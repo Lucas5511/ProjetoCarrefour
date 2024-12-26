@@ -12,8 +12,8 @@ install-dependencies:
   script:
     - echo "Instalando dependências..."
     - pwd
-     - export PROJECT_DIR="/builds/lucas.saliba51/ProjetoCarrefour"  
-    - cd $PROJECT_DIR 
+    - npm cache clean --force  # Limpa o cache do NPM
+    - npm install -g npm@latest  # Atualiza o NPM para a versão mais recente
     - npm ci  # Instala as dependências com base no package-lock.json
 
 # Job para rodar os testes Android no BrowserStack
