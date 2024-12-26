@@ -18,7 +18,7 @@ test-browserstack:
   stage: test
   script:
     - echo "Executando testes Android no BrowserStack..." 
-    - npm run test --yes
+    - npm run test
   only:
     - master
 
