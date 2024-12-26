@@ -100,36 +100,36 @@ No seu package.json, foram configurados diferentes scripts para rodar os testes 
 Execução Local
 Para rodar os testes em um dispositivo Android ou iOS localmente:
 
-Android (Local):
+- Android (Local):
 
 ```
 npm run test:android:local
 ```
-iOS (Local):
+- iOS (Local):
 
 ```
 npm run test:ios:local
 ```
-Execução na Cloud (BrowserStack)
+**Execução na Cloud (BrowserStack)**
 Para rodar os testes na cloud utilizando BrowserStack:
 
-Android (BrowserStack):
+- Android (BrowserStack):
 
 ```
 npm run test:android:browserstack
 ```
-iOS (BrowserStack):
+- iOS (BrowserStack):
 
 ```
 npm run test:ios:browserstack
 ```
-Execução de Todos os Testes
+**Execução de Todos os Testes**
 Para rodar todos os testes, independentemente da plataforma, use o comando:
 
 ```
 npm run test
 ```
-Geração de Relatório Allure
+**Geração de Relatório Allure**
 Após a execução dos testes, para gerar e abrir o relatório Allure, use o comando:
 
 ```
