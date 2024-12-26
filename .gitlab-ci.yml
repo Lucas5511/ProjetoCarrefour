@@ -3,14 +3,18 @@ stages:
   - test
   - deploy
 
-# Usando a imagem Docker com Node.js
-image: node:16
+# Usando uma imagem base Ubuntu
+image: ubuntu:20.04
 
 # Job para instalar as dependências
 install-dependencies:
   stage: install
   script:
     - echo "Instalando dependências..."
+    - apt-get update -y
+    - apt-get install -y curl gnupg2 ca-certificates lsb-release
+    - curl -sL https://deb.nodesource.com/setup_16.x | bash -  # Instala o repositório do Node.js
+    - apt-get install -y nodejs  # Instala o Node.js
     - npm install  # Agora o npm estará disponível
 
 # Job para rodar os testes Android no BrowserStack
