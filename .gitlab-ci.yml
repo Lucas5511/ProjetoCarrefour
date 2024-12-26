@@ -1,65 +1,38 @@
 stages:
-  - build
+  - install
   - test
   - deploy
 
-build-job:
-  stage: build
+# Job para instalar as dependências
+install-dependencies:
+  stage: install
   script:
-    - echo "Compiling the code..."
-    - echo "Compile complete."
+    - echo "Instalando dependências..."
+    - npm install  # Instala as dependências necessárias, incluindo o WebDriverIO
 
-test-android-local:
-  stage: test
-  before_script:
-    # Instalar Node.js e npm
-    - apt-get update
-    - apt-get install -y nodejs npm
-  script:
-    - echo "Running Android tests locally..."
-    - npm run test:android:local
-  only:
-    - master
-
-test-ios-local:
-  stage: test
-  before_script:
-    # Instalar Node.js e npm
-    - apt-get update
-    - apt-get install -y nodejs npm
-  script:
-    - echo "Running iOS tests locally..."
-    - npm run test:ios:local
-  only:
-    - master
-
+# Job para rodar os testes Android no BrowserStack
 test-android-browserstack:
   stage: test
-  before_script:
-    # Instalar Node.js e npm
-    - apt-get update
-    - apt-get install -y nodejs npm
   script:
-    - echo "Running Android tests on BrowserStack..."
-    - npm run test:android:browserstack
+    - echo "Executando testes Android no BrowserStack..."
+    - npm run test:android:browserstack  # Roda os testes Android usando o BrowserStack
   only:
-    - master
+    - master  # Esse job só será executado na branch 'master'
 
+# Job para rodar os testes iOS no BrowserStack
 test-ios-browserstack:
   stage: test
-  before_script:
-    # Instalar Node.js e npm
-    - apt-get update
-    - apt-get install -y nodejs npm
   script:
-    - echo "Running iOS tests on BrowserStack..."
-    - npm run test:ios:browserstack
+    - echo "Executando testes iOS no BrowserStack..."
+    - npm run test:ios:browserstack  # Roda os testes iOS usando o BrowserStack
   only:
-    - master
+    - master  # Esse job só será executado na branch 'master'
 
+# Job para gerar e exibir o relatório do Allure
 allure-report:
   stage: deploy
   script:
-    - npm run allure-report
+    - echo "Gerando o relatório do Allure..."
+    - npm run allure-report  # Gera e exibe o relatório do Allure
   only:
-    - master
+    - master  # Esse job só será executado na branch 'master'
