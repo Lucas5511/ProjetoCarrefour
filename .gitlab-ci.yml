@@ -18,7 +18,7 @@ test-browserstack:
   stage: test
   script:
     - echo "Executando testes Android no BrowserStack..." 
-    - PLATFORM=android TEST_ENV=browserstack npx wdio config/wdio.conf.js
+    - npm run test:android:browserstack
   only:
     - master
 
