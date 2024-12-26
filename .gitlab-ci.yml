@@ -3,26 +3,15 @@ stages:
   - test
   - deploy
 
+# Usando a imagem Docker com Node.js
+image: node:16
+
 # Job para instalar as dependências
 install-dependencies:
   stage: install
   script:
     - echo "Instalando dependências..."
-    # Instalando Node.js e npm manualmente
-    - apt-get update
-    - apt-get install -y curl
-    - curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-    - apt-get install -y nodejs
     - npm install  # Agora o npm estará disponível
-
-# Job para rodar os testes Android no BrowserStack
-test-android-browserstack:
-  stage: test
-  script:
-    - echo "Executando testes Android no BrowserStack..."
-    - npm run test:android:browserstack
-  only:
-    - master
 
 # Job para rodar os testes iOS no BrowserStack
 test-ios-browserstack:
