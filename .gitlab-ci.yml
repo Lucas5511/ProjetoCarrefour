@@ -17,9 +17,8 @@ install-dependencies:
 test-browserstack:
   stage: test
   script:
-    - echo "Executando testes Android no BrowserStack..."
-    - cd /builds/lucas.saliba51/ProjetoCarrefour  
-    - PLATFORM=android TEST_ENV=browserstack npx wdio run ./config/wdio.conf.js --yes
+    - echo "Executando testes Android no BrowserStack..." 
+    - PLATFORM=android TEST_ENV=browserstack npx wdio config/wdio.conf.js
   only:
     - master
 
