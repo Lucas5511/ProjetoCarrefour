@@ -11,16 +11,19 @@ install-dependencies:
   stage: install
   script:
     - echo "Instalando dependências..."
-    # Instalando dependências básicas e Node.js
+    # Atualizando o repositório
     - apt-get update -y
+    # Instalando dependências básicas e Node.js
     - apt-get install -y curl gnupg2 ca-certificates lsb-release
-    # Instalando o Node.js e npm
-    - curl -sL https://deb.nodesource.com/setup_16.x | bash -  # Configura o repositório do Node.js
-    - apt-get install -y nodejs  # Instala o Node.js
-    # Verificando as versões do Node.js e npm para garantir que estão instalados corretamente
+    # Adicionando o repositório do Node.js
+    - curl -sL https://deb.nodesource.com/setup_16.x | bash -
+    # Instalando o Node.js
+    - apt-get install -y nodejs
+    # Verificando se o Node.js e npm foram instalados corretamente
     - node -v
     - npm -v
-    - npm install  # Instala as dependências do projeto
+    # Instalando as dependências do projeto
+    - npm install
 
 # Job para rodar os testes Android no BrowserStack
 test-android-browserstack:
