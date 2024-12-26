@@ -17,9 +17,8 @@ install-dependencies:
 test-browserstack:
   stage: test
   script:
-    - ls -R  # Lista os arquivos e diretórios
     - echo "Executando testes Android no BrowserStack..." 
-    - npm run test
+    - PLATFORM=android TEST_ENV=browserstack npx wdio config/wdio.conf.js
   only:
     - master
 
