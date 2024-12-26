@@ -12,7 +12,7 @@ install-dependencies:
   script:
     - echo "Instalando dependências..."
     - npm ci  # Instala as dependências com base no package-lock.json
-    - npm audit fix --force  # Corrige vulnerabilidades automaticamente
+
 
 # Job para rodar os testes Android no BrowserStack
 test-local-and-browserstack:
