@@ -18,9 +18,8 @@ test-browserstack:
   stage: test
   script:
     - echo "Executando testes Android no BrowserStack..."
-    # Navegar para a raiz do projeto e rodar os testes
-    - cd /builds/lucas.saliba51/ProjetoCarrefour  # Garantir que está na raiz do projeto
-    - npm run testrun:android:browserstack  # Rodar o comando de testes no BrowserStack
+    - cd /builds/lucas.saliba51/ProjetoCarrefour  
+    - PLATFORM=android TEST_ENV=browserstack npx wdio run ./config/wdio.conf.js --yes
   only:
     - master
 
