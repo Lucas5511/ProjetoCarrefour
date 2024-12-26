@@ -41,24 +41,11 @@ class FormsPage {
         return await this.inputTextResult.getText(); // Obtém o texto do resultado
     }
 
-    constructor() {
-        this.switchButton = $('~switch'); // Your selector for the switch
-      }
+    
 
-      static async isSwitchOn() {
-        if (driver.isAndroid) {
-          const switchElement = await $('~switch'); // Access switch element directly
-          return await switchElement.getAttribute('checked') === 'true';
-        } else {
-          const switchElement = await $('~switch');
-          const value = await switchElement.getAttribute('value');
-          return value === '1';
-        }
-      }
-    
     async verifySwitchState(expectedState) {
-        const isSwitchOn = await isSwitchOn(this.switchButton); // Usando a função auxiliar
-    
+        const switchValue = await this.switchButton.getAttribute('checked');
+        const isSwitchOn = switchValue === 'true';
         assert.strictEqual(
             isSwitchOn,
             expectedState,

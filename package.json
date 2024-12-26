@@ -5,9 +5,9 @@
   "scripts": {
     "test:android:local": "cross-env PLATFORM=android TEST_ENV=local npx wdio config/wdio.conf.js",
     "test:ios:local": "cross-env PLATFORM=ios TEST_ENV=local npx wdio config/wdio.conf.js",
-    "test:android:browserstack": "cross-env PLATFORM=android TEST_ENV=browserstack npx wdio config/wdio.conf.js --spec test/specs/forms.spec.js",
+    "test:android:browserstack": "cross-env PLATFORM=android TEST_ENV=browserstack npx wdio config/wdio.conf.js",
     "testrun:android:browserstack": "PLATFORM=android TEST_ENV=browserstack npx wdio run config/wdio.conf.js",
-    "test:ios:browserstack": "cross-env PLATFORM=ios TEST_ENV=browserstack npx wdio config/wdio.conf.js --spec test/specs/forms.spec.js",
+    "test:ios:browserstack": "cross-env PLATFORM=ios TEST_ENV=browserstack npx wdio config/wdio.conf.js",
     "allure-report": "allure generate allure-results --clean && allure open",
     "test": "npx wdio run config/wdio.conf.js"
   },
