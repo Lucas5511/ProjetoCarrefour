@@ -8,31 +8,36 @@ install-dependencies:
   stage: install
   script:
     - echo "Instalando dependências..."
-    - npm install  # Instala as dependências necessárias, incluindo o WebDriverIO
+    # Instalando Node.js e npm manualmente
+    - apt-get update
+    - apt-get install -y curl
+    - curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+    - apt-get install -y nodejs
+    - npm install  # Agora o npm estará disponível
 
 # Job para rodar os testes Android no BrowserStack
 test-android-browserstack:
   stage: test
   script:
     - echo "Executando testes Android no BrowserStack..."
-    - npm run test:android:browserstack  # Roda os testes Android usando o BrowserStack
+    - npm run test:android:browserstack
   only:
-    - master  # Esse job só será executado na branch 'master'
+    - master
 
 # Job para rodar os testes iOS no BrowserStack
 test-ios-browserstack:
   stage: test
   script:
     - echo "Executando testes iOS no BrowserStack..."
-    - npm run test:ios:browserstack  # Roda os testes iOS usando o BrowserStack
+    - npm run test:ios:browserstack
   only:
-    - master  # Esse job só será executado na branch 'master'
+    - master
 
 # Job para gerar e exibir o relatório do Allure
 allure-report:
   stage: deploy
   script:
     - echo "Gerando o relatório do Allure..."
-    - npm run allure-report  # Gera e exibe o relatório do Allure
+    - npm run allure-report
   only:
-    - master  # Esse job só será executado na branch 'master'
+    - master
