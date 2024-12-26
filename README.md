@@ -1,4 +1,4 @@
-# Projeto de Automação de Testes - Carrefour
+# Projeto de Automação de Testes - webdriverio
 
 Este projeto tem como objetivo a automação de testes para uma aplicação utilizando o framework WebdriverIO, com a integração de Appium para testes em dispositivos móveis (Android e iOS), Mocha como gerenciador de testes, Chai para asserts, e a geração de relatórios com Allure Report. A execução dos testes pode ser realizada tanto localmente quanto na cloud de dispositivos BrowserStack. O ambiente de integração contínua (CI/CD) está configurado para rodar os testes através do GitLab CI/CD.
 
