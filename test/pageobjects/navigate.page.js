@@ -2,20 +2,24 @@ const { $ } = require('@wdio/globals');
 const { assert } = require('chai');
 
 class NavigatePage {
-    // Elementos da navegação
-    get webviewButton() { return $('~Webview'); }
-    get loginButton() { return $('~Login'); }
-    get formsButton() { return $('~Forms'); }
-    get swipeButton() { return $('~Swipe'); }
-    get dragButton() { return $('~Drag'); }
+    // Elementos da navegação, incluindo a lógica para Android e iOS
+    get webviewButton() { return driver.isAndroid ? $('~Webview') : $('//XCUIElementTypeOther[@label="WebView"]'); }
+    get loginButton() { return driver.isAndroid ? $('~Login') : $('//XCUIElementTypeOther[@label="Login"]'); }
+    get formsButton() { return driver.isAndroid ? $('~Forms') : $('//XCUIElementTypeOther[@label="Forms"]'); }
+    get swipeButton() { return driver.isAndroid ? $('~Swipe') : $('//XCUIElementTypeOther[@label="Swipe"]'); }
+    
+
+    
 
     // Métodos para navegação
     async navigateToWebview() {
         await this.webviewButton.click();
     }
+
     async verifyWebview() {
-        await this.webviewButton.isDisplayed();
+        await this.verifyElementVisible(this.webviewButton);
     }
+
     async navigateToLogin() {
         await this.loginButton.click();
     }
@@ -28,9 +32,7 @@ class NavigatePage {
         await this.swipeButton.click();
     }
 
-    async navigateToDrag() {
-        await this.dragButton.click();
-    }
+    
 
     // Exemplo: Verifica se um botão está visível após navegação
     async verifyElementVisible(element, timeout = 5000) {

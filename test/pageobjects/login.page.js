@@ -3,22 +3,21 @@ const { assert } = require('chai');
 
 class LoginPage {
     // Elementos da página de login
-    get loginPageButton() { return $('~Login'); }
-    get signupbutton() { return $('//android.widget.TextView[@text="Sign up"]'); }
-    get inputUsername() { return $('~input-email'); }
-    get inputPassword() { return $('~input-password'); }
-    get inputRepeatPassword() { return $('~input-repeat-password'); }
-    get btnLogin() { return $('~button-LOGIN'); }
-    get btnSignUp() { return $('//android.widget.TextView[@text="SIGN UP"]'); }
-
-    // Mensagens de erro
-    get emailinvaliderrormessage() { return $('//android.widget.TextView[@text="Please enter a valid email address"]'); }
-    get passwordinvaliderrormessage() { return $('//android.widget.TextView[@text="Please enter at least 8 characters"]'); }
-    get repeatPasswordErrorMessage() { return $('//android.widget.TextView[@text="Please enter the same password"]'); } 
-    get successmessage() { return $('//android.widget.TextView[@resource-id="android:id/message"]'); }
-    get okbuttonsuccessmessage() { return $('//android.widget.Button[@resource-id="android:id/button1"]'); }
-    get successgetinmessage() { return $('//android.widget.TextView[@resource-id="android:id/message"]'); }
-
+    get loginPageButton() { return driver.isAndroid ? $('~Login') : $('//XCUIElementTypeButton[@name="Login"]');}
+    get signupbutton() { return driver.isAndroid ? $('//android.widget.TextView[@text="Sign up"]') : $('//XCUIElementTypeButton[@name="Sign up"]');}
+    get inputUsername() { return driver.isAndroid ? $('~input-email') : $('//XCUIElementTypeTextField[@name="input-email"]');}
+    get inputPassword() { return driver.isAndroid ? $('~input-password') : $('//XCUIElementTypeSecureTextField[@name="input-password"]');}
+    get inputRepeatPassword() { return driver.isAndroid ? $('~input-repeat-password') : $('//XCUIElementTypeSecureTextField[@name="input-repeat-password"]');}
+    get btnLogin() { return driver.isAndroid ? $('~button-LOGIN') : $('//XCUIElementTypeButton[@name="button-LOGIN"]');}
+    get btnSignUp() { return driver.isAndroid ? $('//android.widget.TextView[@text="SIGN UP"]') : $('//XCUIElementTypeButton[@name="SIGN UP"]');}
+    get emailinvaliderrormessage() { return driver.isAndroid ? $('//android.widget.TextView[@text="Please enter a valid email address"]') : $('//XCUIElementTypeStaticText[@name="Please enter a valid email address"]');}
+    get passwordinvaliderrormessage() { return driver.isAndroid ? $('//android.widget.TextView[@text="Please enter at least 8 characters"]') : $('//XCUIElementTypeStaticText[@name="Please enter at least 8 characters"]');}
+    get repeatPasswordErrorMessage() { return driver.isAndroid ? $('//android.widget.TextView[@text="Please enter the same password"]') : $('//XCUIElementTypeStaticText[@name="Please enter the same password"]');}
+    get successmessage() { return driver.isAndroid ? $('//android.widget.TextView[@resource-id="android:id/message"]') : $('/XCUIElementTypeApplication/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeAlert/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]'); }
+    get okbuttonsuccessmessage() { return driver.isAndroid ? $('//android.widget.Button[@resource-id="android:id/button1"]') : $('//XCUIElementTypeButton[@name="OK"]');}
+    get successgetinmessage() { return driver.isAndroid ? $('//android.widget.TextView[@resource-id="android:id/message"]') : $('/XCUIElementTypeApplication/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeAlert/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeScrollView[1]/XCUIElementTypeOther[1]'); }
+    
+    
     // Função de login
     async login(username, password) {
         await this.loginPageButton.click();

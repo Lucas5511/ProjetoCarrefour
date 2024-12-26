@@ -36,8 +36,8 @@ exports.config = {
         // Configurações para o BrowserStack
         {
           platformName: isIOS ? 'iOS' : 'Android',
-          'appium:platformVersion': isIOS ? '16' : '12.0',
-          'appium:deviceName': isIOS ? 'iPhone 14 Pro Max' : 'Samsung Galaxy S21',          
+          'appium:platformVersion': isIOS ? '16' : '13.0',
+          'appium:deviceName': isIOS ? 'iPhone 14 Pro Max' : 'Samsung Galaxy S23 Ultra',          
           'appium:automationName': isIOS ? 'XCUITest' : 'UiAutomator2',
           'appium:app': isIOS ? browserStackAppId.ios : browserStackAppId.android, // App ID dinâmico
           user: process.env.BROWSERSTACK_USERNAME || 'lucasdeoliveiras_BCfDNo',

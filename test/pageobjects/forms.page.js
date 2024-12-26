@@ -3,9 +3,9 @@ const { assert } = require('chai');
 
 class FormsPage {
     // Elementos
-    get textInputField() { return $('~text-input'); } // Campo de texto
-    get inputTextResult() { return $('~input-text-result'); } // Resultado do texto inserido
-    get switchButton() { return $('~switch'); } // Botão de alternância (switch)
+    get textInputField() { return driver.isAndroid ? $('~text-input') : $('//XCUIElementTypeTextField[@name="text-input"]');}    
+    get inputTextResult() { return driver.isAndroid ? $('~input-text-result') : $('//XCUIElementTypeStaticText[@name="input-text-result"]');}    
+    get switchButton() { return driver.isAndroid ? $('~switch') : $('//XCUIElementTypeSwitch[@name="switch"]');}
     
     
 
@@ -13,6 +13,7 @@ class FormsPage {
     async fillTextInput(text) {
         await this.textInputField.waitForDisplayed({ timeout: 5000 });
         await this.textInputField.setValue(text);
+        await this.inputTextResult.click();
     }
     // Métodos de verificação
     async verifyTextInputValue(expectedText) {
@@ -22,6 +23,7 @@ class FormsPage {
             expectedText,
             `Esperado que o texto fosse "${expectedText}", mas foi "${actualText}"`
         );
+        await this.inputTextResult.click();
     }
 
     async toggleSwitch() {
@@ -39,11 +41,24 @@ class FormsPage {
         return await this.inputTextResult.getText(); // Obtém o texto do resultado
     }
 
-    
+    constructor() {
+        this.switchButton = $('~switch'); // Your selector for the switch
+      }
 
+      static async isSwitchOn() {
+        if (driver.isAndroid) {
+          const switchElement = await $('~switch'); // Access switch element directly
+          return await switchElement.getAttribute('checked') === 'true';
+        } else {
+          const switchElement = await $('~switch');
+          const value = await switchElement.getAttribute('value');
+          return value === '1';
+        }
+      }
+    
     async verifySwitchState(expectedState) {
-        const switchValue = await this.switchButton.getAttribute('checked');
-        const isSwitchOn = switchValue === 'true';
+        const isSwitchOn = await isSwitchOn(this.switchButton); // Usando a função auxiliar
+    
         assert.strictEqual(
             isSwitchOn,
             expectedState,

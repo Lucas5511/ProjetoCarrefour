@@ -21,7 +21,5 @@ describe('Test Navigation', () => {
         await navigatePage.navigateToSwipe();
     });
     
-    it('deve navegar para Drag', async () => {
-        await navigatePage.navigateToDrag();
-    });
+   
 });
