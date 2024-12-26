@@ -15,11 +15,11 @@ install-dependencies:
 
 
 # Job para rodar os testes Android no BrowserStack
-test-local-and-browserstack:
+test-browserstack:
   stage: test
   script:
-    - echo "Executando testes Android no BrowserStack..."
-    - package.json
+    - echo "Executando testes Android no BrowserStack..."    
+    - npx wdio config/wdio.conf.js
   only:
     - master
 
