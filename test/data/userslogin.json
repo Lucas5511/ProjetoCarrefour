@@ -1,0 +1,4 @@
+[
+    { "validuser": "teste@teste.com", "validpassword": "12345678" },
+    { "invaliduser": "123", "invalidpassword": "123" }
+  ]
