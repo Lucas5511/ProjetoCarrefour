@@ -13,6 +13,15 @@ install-dependencies:
     - echo "Instalando dependências..."
     - npm install  # Agora o npm estará disponível
 
+# Job para rodar os testes Android no BrowserStack
+test-android-browserstack:
+  stage: test
+  script:
+    - echo "Executando testes Android no BrowserStack..."
+    - npm run test:android:browserstack
+  only:
+    - master
+
 # Job para rodar os testes iOS no BrowserStack
 test-ios-browserstack:
   stage: test
