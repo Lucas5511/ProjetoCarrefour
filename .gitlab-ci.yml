@@ -21,7 +21,7 @@ install-dependencies:
     - echo "Instalando dependências..."
     - npm ci
 
-test-browserstack-android: # Renomeado para clareza
+test-browserstack-android: 
   stage: test
   script:
     - echo "Definindo variáveis de ambiente para Android..."
@@ -32,14 +32,14 @@ test-browserstack-android: # Renomeado para clareza
   only:
     - master
 
-test-browserstack-ios: # Novo job para iOS
+test-browserstack-ios: 
   stage: test
   script:
     - echo "Definindo variáveis de ambiente para iOS..."
     - export TEST_ENV=browserstack
     - export PLATFORM=ios
     - echo "Executando testes iOS no BrowserStack..."
-    - ./node_modules/.bin/wdio run ./config/wdio.conf.js # Usa o mesmo arquivo de configuração, mas com capabilities diferentes
+    - ./node_modules/.bin/wdio run ./config/wdio.conf.js 
   only:
     - master
 
@@ -47,6 +47,7 @@ allure-report:
   stage: deploy
   script:
     - echo "Gerando o relatório do Allure..."
-    - npm run allure-report
+    - ./node_modules/.bin/allure generate allure-results --clean
+    - ./node_modules/.bin/allure open
   only:
     - master
