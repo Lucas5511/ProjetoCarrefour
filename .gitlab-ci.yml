@@ -4,7 +4,7 @@ stages:
   - deploy
 
 # Usando a imagem Docker com Node.js
-image: node:16
+image: node:22.11.0
 
 # Job para instalar as dependências
 install-dependencies:
