@@ -4,7 +4,7 @@ stages:
   - deploy
 
 # Usando a imagem Docker com Node.js
-image: node:16
+image: node:22.11.0
 
 # Job para instalar as dependências
 install-dependencies:
@@ -14,22 +14,15 @@ install-dependencies:
     - npm install  # Agora o npm estará disponível
 
 # Job para rodar os testes Android no BrowserStack
-test-android-browserstack:
+test-local-and-browserstack:
   stage: test
   script:
     - echo "Executando testes Android no BrowserStack..."
-    - npm run docker:browserstack:android
+    - npm run test
   only:
     - master
 
-# Job para rodar os testes iOS no BrowserStack
-test-ios-browserstack:
-  stage: test
-  script:
-    - echo "Executando testes iOS no BrowserStack..."
-    - npm run docker:browserstack:ios
-  only:
-    - master
+
 
 # Job para gerar e exibir o relatório do Allure
 allure-report:
