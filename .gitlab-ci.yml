@@ -2,7 +2,7 @@ stages:
   - test
 
 variables:
- BROWSERSTACK_USERNAME: "lucasdeoliveiras_BCfDNo"
+  BROWSERSTACK_USERNAME: "lucasdeoliveiras_BCfDNo"
   BROWSERSTACK_ACCESS_KEY: "H6yDfhBWyi31rJu69oYd"
   NO_UPDATE_NOTIFIER: 1
 
