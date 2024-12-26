@@ -21,42 +21,7 @@ install-dependencies:
     - echo "Instalando dependências..."
     - npm ci
 
-test-browserstack:
-  stage: test
-  script:
-    - echo "Definindo variáveis de ambiente..."
-    - export TEST_ENV=browserstack
-    - export PLATFORM=android
-    - echo "Executando testes Android no BrowserStack..."
-    - ./node_modules/.bin/wdio run ./config/wdio.conf.js
-  only:
-    - master
-
-allure-report:
-  stage: deploystages:
-  - install
-  - test
-  - deploy
-
-image: node:22
-
-variables:
-  BROWSERSTACK_USERNAME: "lucasdeoliveiras_BCfDNo"
-  BROWSERSTACK_ACCESS_KEY: "H6yDfhBWyi31rJu69oYd"
-  NO_UPDATE_NOTIFIER: 1
-
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
-
-install-dependencies:
-  stage: install
-  script:
-    - echo "Instalando dependências..."
-    - npm ci
-
-test-browserstack-android: 
+test-browserstack-android: # Renomeado para clareza
   stage: test
   script:
     - echo "Definindo variáveis de ambiente para Android..."
@@ -67,24 +32,19 @@ test-browserstack-android:
   only:
     - master
 
-test-browserstack-ios: 
+test-browserstack-ios: # Novo job para iOS
   stage: test
   script:
     - echo "Definindo variáveis de ambiente para iOS..."
     - export TEST_ENV=browserstack
     - export PLATFORM=ios
     - echo "Executando testes iOS no BrowserStack..."
-    - ./node_modules/.bin/wdio run ./config/wdio.conf.js 
+    - ./node_modules/.bin/wdio run ./config/wdio.conf.js # Usa o mesmo arquivo de configuração, mas com capabilities diferentes
   only:
     - master
 
 allure-report:
   stage: deploy
-  script:
-    - echo "Gerando o relatório do Allure..."
-    - npm run allure-report
-  only:
-    - master
   script:
     - echo "Gerando o relatório do Allure..."
     - npm run allure-report
