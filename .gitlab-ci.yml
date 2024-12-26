@@ -13,23 +13,22 @@ install-dependencies:
     - echo "Instalando dependências..."
     - npm ci  # Instala as dependências com base no package-lock.json
 
-
 # Job para rodar os testes Android no BrowserStack
 test-browserstack:
   stage: test
   script:
-    - echo "Executando testes Android no BrowserStack..."    
-    - npm run testrun:android:browserstack
+    - echo "Executando testes Android no BrowserStack..."
+    # Navegar para a raiz do projeto e rodar os testes
+    - cd /builds/lucas.saliba51/ProjetoCarrefour  # Garantir que está na raiz do projeto
+    - npm run testrun:android:browserstack  # Rodar o comando de testes no BrowserStack
   only:
     - master
-
-
 
 # Job para gerar e exibir o relatório do Allure
 allure-report:
   stage: deploy
   script:
     - echo "Gerando o relatório do Allure..."
-    - npm run allure-report
+    - npm run allure-report  # Gerar o relatório do Allure
   only:
     - master
