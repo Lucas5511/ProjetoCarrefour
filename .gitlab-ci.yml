@@ -11,7 +11,7 @@ install-dependencies:
   stage: install
   script:
     - echo "Instalando dependências..."
-    - npm install  # Instala as dependências com base no package-lock.json
+    - npm ci  # Instala as dependências com base no package-lock.json
 
 # Job para rodar os testes Android no BrowserStack
 test-browserstack:
