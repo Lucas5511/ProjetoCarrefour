@@ -11,6 +11,9 @@ install-dependencies:
   stage: install
   script:
     - echo "Instalando dependências..."
+    - pwd
+     - export PROJECT_DIR="/builds/lucas.saliba51/ProjetoCarrefour"  
+    - cd $PROJECT_DIR 
     - npm ci  # Instala as dependências com base no package-lock.json
 
 # Job para rodar os testes Android no BrowserStack
