@@ -53,6 +53,9 @@ allure-report:
     - java -version
     - echo "Gerando o relatório do Allure..."
     - ./node_modules/.bin/allure generate allure-results --clean
-    - ./node_modules/.bin/allure open
+    
+  artifacts:
+                                    paths:
+                                    - allure-report
   only:
     - master
