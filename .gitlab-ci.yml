@@ -1,7 +1,7 @@
 stages:
   - install
   - test
-  - deploy
+  - report
 
 image: node:22
 
@@ -44,7 +44,7 @@ test-browserstack-ios:
     - master
 
 allure-report:
-  stage: deploy
+  stage: report
   script:
     - echo "Instalando o Java necessário para o Allure..."
     - apt-get update && apt-get install -y openjdk-17-jre
