@@ -55,7 +55,7 @@ allure-report:
     - ./node_modules/.bin/allure generate allure-results --clean
     
   artifacts:
-                                    paths:
-                                    - allure-report
+      paths:
+       - allure-report
   only:
     - master
