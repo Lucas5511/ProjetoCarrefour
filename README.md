@@ -31,7 +31,7 @@ Antes de começar, certifique-se de que você tenha as seguintes ferramentas ins
 Clone este repositório para sua máquina local:
 
 ```
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone gitlab.com/lucas.saliba51/ProjetoCarrefour
 cd seu-repositorio
 ```
 ### 2. Instale as Dependências
@@ -52,7 +52,7 @@ services: [
 ]
 ```
 ### 4. Configuração do Appium
-A configuração do Appium pode ser encontrada no arquivo config/appium.config.js. Certifique-se de que o caminho para os aplicativos (APK/IPA) esteja correto e que as capacidades para dispositivos móveis estejam configuradas adequadamente.
+Certifique-se de que o caminho para os aplicativos (APK/IPA) esteja correto e que as capacidades para dispositivos móveis estejam configuradas adequadamente.
 
 ### 5. Configuração do CI/CD com GitLab
 No GitLab CI/CD, a configuração do pipeline está em .gitlab-ci.yml. Esse arquivo configura o ambiente para execução dos testes automatizados a cada commit ou push para o repositório.
@@ -85,8 +85,7 @@ reporters: ['allure'],
 reporterOptions: {
     allure: {
         outputDir: 'allure-results',
-        disableWebdriverStepsReporting: false,
-        disableWebdriverScreenshotsReporting: false
+
     }
 }
 ```
